@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="com.itranga.e4.target-platform" sequenceNumber="107">
+<locations>
+<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.base.feature.group" version="2.12.0.v20160420-0247"/>
+<repository location="http://download.eclipse.org/modeling/emf/emf/builds/release"/>
+</location>
+<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.ecf.core.feature.feature.group" version="1.4.0.v20170516-2248"/>
+<unit id="org.eclipse.ecf.core.ssl.feature.feature.group" version="1.1.0.v20170110-1317"/>
+<unit id="org.eclipse.ecf.filetransfer.feature.feature.group" version="3.13.7.v20170516-2248"/>
+<unit id="org.eclipse.ecf.filetransfer.httpclient4.feature.feature.group" version="3.13.7.v20170516-2248"/>
+<unit id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature.feature.group" version="1.1.0.v20170110-1317"/>
+<unit id="org.eclipse.ecf.filetransfer.ssl.feature.feature.group" version="1.1.0.v20170110-1317"/>
+<unit id="org.eclipse.platform.ide" version="4.7.3.M20180301-0715"/>
+<repository location="http://download.eclipse.org/eclipse/updates/4.7"/>
+</location>
+<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="com.itranga.rcp.features.aries-spifly.feature.group" version="1.0.10.20180404174034"/>
+<unit id="com.itranga.rcp.features.aries-spifly.source.feature.group" version="1.0.10.20180404174034"/>
+<unit id="com.itranga.rcp.features.camel-core.feature.group" version="2.21.0.20180404174034"/>
+<unit id="com.itranga.rcp.features.camel-core.source.feature.group" version="2.21.0.20180404174034"/>
+<unit id="com.itranga.rcp.features.camel-jetty.feature.group" version="2.21.0.20180404174034"/>
+<unit id="com.itranga.rcp.features.camel-jetty.source.feature.group" version="2.21.0.20180404174034"/>
+<unit id="com.itranga.rcp.features.logback.feature.group" version="1.2.3.20180404174034"/>
+<unit id="com.itranga.rcp.features.logback.source.feature.group" version="1.2.3.20180404174034"/>
+<unit id="com.itranga.rcp.features.rxjava.feature.group" version="2.1.12.20180404174034"/>
+<unit id="com.itranga.rcp.features.rxjava.source.feature.group" version="2.1.12.20180404174034"/>
+<repository location="http://u.link.1c.ru/repo-e4/"/>
+</location>
+<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="com.fasterxml.jackson.core.jackson-annotations" version="2.6.2.v20161117-2150"/>
+<unit id="com.fasterxml.jackson.core.jackson-core" version="2.6.2.v20161117-2150"/>
+<unit id="com.fasterxml.jackson.core.jackson-databind" version="2.6.2.v20161117-2150"/>
+<unit id="com.fasterxml.jackson.datatype.jackson-datatype-guava" version="2.6.2.v20161117-2150"/>
+<unit id="org.apache.commons.io" version="2.2.0.v201405211200"/>
+<unit id="org.apache.commons.lang3" version="3.1.0.v201403281430"/>
+<unit id="org.apache.commons.pool" version="1.6.0.v201204271246"/>
+<unit id="org.apache.httpcomponents.httpclient.win" version="4.5.2.v20170410-1149"/>
+<unit id="org.apache.httpcomponents.httpclient.win.source" version="4.5.2.v20170410-1149"/>
+<unit id="org.hamcrest.core" version="1.3.0.v201303031735"/>
+<unit id="org.junit" version="4.12.0.v201504281640"/>
+<unit id="org.mockito" version="1.9.5.v201605172210"/>
+<unit id="org.slf4j.api" version="1.7.2.v20121108-1250"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180206163158/repository"/>
+</location>
+</locations>
+</target>

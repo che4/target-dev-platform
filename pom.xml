@@ -1,0 +1,349 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>io.github.che4</groupId>
+	<artifactId>target-dev-platform</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>eclipse-target-definition</packaging>
+	<name>Che4 target platform for Eclipse plug-ins development</name>
+	
+	<description>Generates P2 repository from Maven artifacts. This repository is a &quot;target platform&quot; in Eclipse IDE while developing Che4 plug-ins and features.</description>
+	<organization>
+		<name>Che4</name>
+		<url>https://che4.github.io</url>
+	</organization>
+	<inceptionYear>2018</inceptionYear>
+	<developers>
+		<developer>
+			<id>denis-kalinin</id>
+			<email>dk@itranga.com</email>
+			<url>https://github.com/denis-kalinin</url>
+			<timezone>UTC+2</timezone>
+			<name>Denis Kalinin</name>
+			<organization>Itranga OÜ</organization>
+			<organizationUrl>http://itranga.com</organizationUrl>
+		</developer>
+	</developers>
+	
+	<properties>
+		<version.tycho>1.1.0</version.tycho>
+		<version.camel>2.21.0</version.camel>
+	</properties>
+
+	<build>
+		<defaultGoal>package</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.reficio</groupId>
+				<artifactId>p2-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.reficio</groupId>
+					<artifactId>p2-maven-plugin</artifactId>
+					<version>1.3.0</version>
+					<executions>
+						<execution>
+							<id>generate-p2-site</id>
+							<phase>compile</phase>
+							<goals><goal>site</goal></goals>
+						</execution>
+					</executions>
+					<configuration>
+						<categoryFileURL>category.xml</categoryFileURL>
+						<featureDefinitions>
+							<feature>
+								<!-- featureFile>src/features/com.itranga.e4.activemq/feature.xml</featureFile -->
+								<id>com.itranga.rcp.features.activemq</id>
+								<version>${project.version}</version>
+								<label>Itranga: Apache ActiveMQ Feature</label>
+								<providerName>${project.organization.name}</providerName>
+								<description>Apache ActiveMQ feature for Eclipse RCP</description>
+								<copyright>A copyright</copyright>
+								<license>A licence</license>
+								<generateSourceFeature>true</generateSourceFeature>
+								<artifacts>
+									<artifact>
+										<id>org.apache.activemq:activemq-broker:[5,6)</id>
+										<source>true</source>
+										<excludes>
+											<exclude>org.slf4j</exclude>
+										</excludes>
+									</artifact>
+								</artifacts>
+							</feature>
+							<feature>
+								<id>com.itranga.rcp.features.camel-core</id>
+								<version>${version.camel}-SNAPSHOT</version>
+								<label>Itranga: Apache Camel (core) Features</label>
+								<providerName>${project.organization.name}</providerName>
+								<description>
+								Apache Camel Core feature for Eclipse RCP
+								- camel-core-osgi
+								- camel-eclipse
+								</description>
+								<copyright>A copyright</copyright>
+								<license>A licence</license>
+								<generateSourceFeature>true</generateSourceFeature>
+								<artifacts>
+									<artifact>
+										<id>org.apache.camel:camel-eclipse:${version.camel}</id>
+										<source>true</source>
+										<excludes>
+											<exclude>org.eclipse.equinox:common</exclude>
+											<exclude>org.slf4j</exclude>
+										</excludes>
+									</artifact>
+									<artifact>
+										<id>org.apache.camel:camel-core-osgi:${version.camel}</id>
+										<source>true</source>
+										<excludes><exclude>org.slf4j</exclude></excludes>
+									</artifact>
+								</artifacts>
+							</feature>
+							<feature>
+								<id>com.itranga.rcp.features.camel-netty4-http</id>
+								<version>${version.camel}-SNAPSHOT</version>
+								<label>Itranga: Apache Camel (Netty4 HTTP) Feature</label>
+								<providerName>${project.organization.name}</providerName>
+								<description>Apache Camel Netty4 HTTP Component feature for Eclipse RCP</description>
+								<copyright>A copyright</copyright>
+								<license>A licence</license>
+								<generateSourceFeature>true</generateSourceFeature>
+								<artifacts>
+									<artifact>
+										<id>org.apache.camel:camel-netty4-http:${version.camel}</id>
+										<source>true</source>
+										<excludes><exclude>org.slf4j</exclude></excludes>
+									</artifact>
+								</artifacts>
+							</feature>
+							<feature>
+								<id>com.itranga.rcp.features.camel-jetty</id>
+								<version>${version.camel}-SNAPSHOT</version>
+								<label>Itranga: Apache Camel (Jetty) Feature</label>
+								<providerName>${project.organization.name}</providerName>
+								<description>Apache Camel Jetty Component feature for Eclipse RCP</description>
+								<copyright>A copyright</copyright>
+								<license>A licence</license>
+								<generateSourceFeature>true</generateSourceFeature>
+								<artifacts>
+									<artifact>
+										<id>org.apache.camel:camel-jetty:${version.camel}</id>
+										<source>true</source>
+										<excludes>
+											<exclude>org.eclipse.jetty:*</exclude>
+											<exclude>org.slf4j</exclude>
+										</excludes>
+									</artifact>
+									<artifact>
+										<id>org.eclipse.jetty:jetty-client:[9.4.8,10)</id>
+										<excludes><exclude>org.slf4j</exclude></excludes>
+									</artifact>
+									<artifact>
+										<id>org.eclipse.jetty:jetty-server:[9.4.8,10)</id>
+										<excludes><exclude>org.slf4j</exclude></excludes>
+									</artifact>
+									<artifact>
+										<id>org.eclipse.jetty:jetty-jmx:[9.4.8,10)</id>
+										<excludes><exclude>org.slf4j</exclude></excludes>
+									</artifact>
+									<artifact>
+										<id>org.eclipse.jetty:jetty-servlets:[9.4.8,10)</id>
+										<excludes><exclude>org.slf4j</exclude></excludes>
+									</artifact>
+									<artifact>
+										<id>org.eclipse.jetty:jetty-servlet:[9.4.8,10)</id>
+										<excludes><exclude>org.slf4j</exclude></excludes>
+									</artifact>
+								</artifacts>
+							</feature>
+							<feature>
+								<id>com.itranga.rcp.features.aries-spifly</id>
+								<version>1.0.10-SNAPSHOT</version>
+								<label>Itranga: Apache Aries Spifly Features</label>
+								<providerName>${project.organization.name}</providerName>
+								<description>This feature contains an extender that facilitates the use of JRE SPI providers (components typically plugged in to the JRE through META-INF/services resources).</description>
+								<copyright>A copyright</copyright>
+								<license>A licence</license>
+								<generateSourceFeature>true</generateSourceFeature>
+								<artifacts>
+									<artifact>
+										<id>org.apache.aries.spifly:org.apache.aries.spifly.dynamic.bundle:1.0.10</id>
+										<source>true</source>
+										<excludes><exclude>org.slf4j</exclude></excludes>
+									</artifact>
+								</artifacts>
+							</feature>
+							<feature> 
+								<id>com.itranga.rcp.features.rxjava</id>
+								<version>2.1.12-SNAPSHOT</version>
+								<label>Itranga: RxJava</label>
+								<providerName>${project.organization.name}</providerName>
+								<description>RxJava feature</description>
+								<copyright>A copyright</copyright>
+								<license>A licence</license>
+								<generateSourceFeature>true</generateSourceFeature>
+								<!--
+								<featureFile>src/features/com.itranga.rcp.features.rxjava/feature.xml</featureFile>
+								-->
+								<artifacts>
+									<artifact>
+										<id>io.reactivex.rxjava2:rxjava:2.1.12</id>
+										<source>true</source>
+									</artifact>
+								</artifacts>
+							</feature>
+							<feature> 
+								<id>com.itranga.rcp.features.logback</id>
+								<version>1.2.3-SNAPSHOT</version>
+								<label>Itranga: Logback</label>
+								<providerName>${project.organization.name}</providerName>
+								<description>Logback feature</description>
+								<copyright>Copyright (c) ${project.inceptionYear} ${project.organization.name}</copyright>
+								<license>EPL v.1</license>
+								<generateSourceFeature>true</generateSourceFeature>
+								<artifacts>
+									<artifact>
+										<id>ch.qos.logback:logback-classic:1.2.3</id>
+										<source>true</source>
+									</artifact>
+								</artifacts>
+							</feature>
+						</featureDefinitions>
+					</configuration>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions><pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.reficio</groupId>
+										<artifactId>p2-maven-plugin</artifactId>
+										<versionRange>[1.3.0,)</versionRange>
+										<goals><goal>site</goal></goals>
+									</pluginExecutionFilter>
+									<action><ignore></ignore></action>
+							</pluginExecution></pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-maven-plugin</artifactId>
+					<version>${version.tycho}</version>
+					<extensions>true</extensions>
+					<!-- 
+					<executions>
+						<execution>
+							<id>create-platform</id>
+							<phase>package</phase>
+						</execution>
+					</executions>
+					-->
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-broker</artifactId>
+			<version>5.15.3</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-eclipse</artifactId>
+			<version>${version.camel}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.eclipse.equinox</groupId>
+					<artifactId>common</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-netty4</artifactId>
+			<version>${version.camel}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-mina2</artifactId>
+			<version>${version.camel}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core-osgi</artifactId>
+			<version>${version.camel}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-undertow</artifactId>
+			<version>${version.camel}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-netty4-http</artifactId>
+			<version>${version.camel}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jetty</artifactId>
+			<version>${version.camel}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.spifly</groupId>
+			<artifactId>org.apache.aries.spifly.dynamic.bundle</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+		<dependency>
+			<groupId>io.reactivex.rxjava2</groupId>
+			<artifactId>rxjava</artifactId>
+			<version>2.1.12</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<url>https://github.com/che4/target-dev-platform</url>
+	<scm>
+		<url>https://github.com/che4/target-dev-platform</url>
+		<connection>scm:git:https://github.com/che4/target-dev-platform.git</connection>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/che4/target-dev-platform/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>travis</system>
+	</ciManagement>
+</project>
