@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="che4-target-platform" sequenceNumber="107">
+<?pde version="3.8"?><target name="che4-target-platform" sequenceNumber="109">
 <locations>
+<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="com.itranga.rcp.features.aries-spifly.feature.group" version="1.0.10.20180414152558"/>
+<unit id="com.itranga.rcp.features.aries-spifly.source.feature.group" version="1.0.10.20180414152558"/>
+<unit id="com.itranga.rcp.features.camel-core.feature.group" version="2.21.0.20180414152558"/>
+<unit id="com.itranga.rcp.features.camel-core.source.feature.group" version="2.21.0.20180414152558"/>
+<unit id="com.itranga.rcp.features.camel-jetty.feature.group" version="2.21.0.20180414152558"/>
+<unit id="com.itranga.rcp.features.camel-jetty.source.feature.group" version="2.21.0.20180414152558"/>
+<unit id="com.itranga.rcp.features.camel-netty4-http.feature.group" version="2.21.0.20180414152558"/>
+<unit id="com.itranga.rcp.features.camel-netty4-http.source.feature.group" version="2.21.0.20180414152558"/>
+<unit id="com.itranga.rcp.features.logback.feature.group" version="1.2.3.20180414152558"/>
+<unit id="com.itranga.rcp.features.logback.source.feature.group" version="1.2.3.20180414152558"/>
+<unit id="com.itranga.rcp.features.rxjava.feature.group" version="2.1.12.20180414152558"/>
+<unit id="com.itranga.rcp.features.rxjava.source.feature.group" version="2.1.12.20180414152558"/>
+<repository location="https://che4-target-platform.s3-eu-west-1.amazonaws.com"/>
+</location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.base.feature.group" version="2.12.0.v20160420-0247"/>
 <repository location="http://download.eclipse.org/modeling/emf/emf/builds/release"/>
@@ -14,19 +29,6 @@
 <unit id="org.eclipse.ecf.filetransfer.ssl.feature.feature.group" version="1.1.0.v20170110-1317"/>
 <unit id="org.eclipse.platform.ide" version="4.7.3.M20180301-0715"/>
 <repository location="http://download.eclipse.org/eclipse/updates/4.7"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="com.itranga.rcp.features.aries-spifly.feature.group" version="1.0.10.20180404174034"/>
-<unit id="com.itranga.rcp.features.aries-spifly.source.feature.group" version="1.0.10.20180404174034"/>
-<unit id="com.itranga.rcp.features.camel-core.feature.group" version="2.21.0.20180404174034"/>
-<unit id="com.itranga.rcp.features.camel-core.source.feature.group" version="2.21.0.20180404174034"/>
-<unit id="com.itranga.rcp.features.camel-jetty.feature.group" version="2.21.0.20180404174034"/>
-<unit id="com.itranga.rcp.features.camel-jetty.source.feature.group" version="2.21.0.20180404174034"/>
-<unit id="com.itranga.rcp.features.logback.feature.group" version="1.2.3.20180404174034"/>
-<unit id="com.itranga.rcp.features.logback.source.feature.group" version="1.2.3.20180404174034"/>
-<unit id="com.itranga.rcp.features.rxjava.feature.group" version="2.1.12.20180404174034"/>
-<unit id="com.itranga.rcp.features.rxjava.source.feature.group" version="2.1.12.20180404174034"/>
-<repository location="http://u.link.1c.ru/repo-e4/"/>
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="com.fasterxml.jackson.core.jackson-annotations" version="2.6.2.v20161117-2150"/>
