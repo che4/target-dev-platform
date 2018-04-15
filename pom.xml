@@ -6,7 +6,7 @@
 	<packaging>eclipse-target-definition</packaging>
 	<name>Che4 target platform for Eclipse plug-ins development</name>
 	
-	<description>Generates P2 repository from Maven artifacts. This repository is a &quot;target platform&quot; in Eclipse IDE while developing Che4 plug-ins and features.</description>
+	<description>Generates P2 repository from Maven artifacts. This repository is a "target platform" in Eclipse IDE while developing Che4 plug-ins and features.</description>
 	<organization>
 		<name>Che4</name>
 		<url>https://che4.github.io</url>
@@ -28,19 +28,37 @@
 		<version.tycho>1.1.0</version.tycho>
 		<version.camel>2.21.0</version.camel>
 	</properties>
+	
+	<profiles>
+		<profile>
+			<id>update-target</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>release:prepare release:perform deploy:deploy</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>update-p2</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.reficio</groupId>
+						<artifactId>p2-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 	<build>
-		<defaultGoal>package</defaultGoal>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.reficio</groupId>
-				<artifactId>p2-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -232,7 +250,7 @@
 										<versionRange>[1.3.0,)</versionRange>
 										<goals><goal>site</goal></goals>
 									</pluginExecutionFilter>
-									<action><ignore></ignore></action>
+									<action><ignore /></action>
 							</pluginExecution></pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
@@ -251,8 +269,25 @@
 					</executions>
 					-->
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5.3</version>
+					<configuration>
+						<tagNameFormat>v@{project.version}</tagNameFormat>
+						<useReleaseProfile>false</useReleaseProfile>
+						<releaseProfiles>update-target</releaseProfiles>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+			</plugin>
+		</plugins>
 	</build>
 
 	<dependencies>
@@ -338,6 +373,8 @@
 	<scm>
 		<url>https://github.com/che4/target-dev-platform</url>
 		<connection>scm:git:https://github.com/che4/target-dev-platform.git</connection>
+		<developerConnection>scm:git:git@github.com:che4/target-dev-platform.git</developerConnection>
+		<tag>HEAD</tag>
 	</scm>
 	<issueManagement>
 		<system>GitHub Issues</system>
@@ -346,4 +383,11 @@
 	<ciManagement>
 		<system>travis</system>
 	</ciManagement>
+	<distributionManagement>
+		<repository>
+			<name>mybintray</name>
+			<id>bintray</id>
+			<url>https://api.bintray.com/maven/che4/public/target-dev-platform</url>
+		</repository>
+	</distributionManagement>
 </project>
