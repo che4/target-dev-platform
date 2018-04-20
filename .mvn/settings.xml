@@ -6,9 +6,8 @@
 
 	<servers>
 		<server>
-			<id>packagecloud-che4</id>
-			<!-- ${env.packagecloud-che4-password} -->
-			<password>685ce86038ae24fb3068f907b90ca2423aac972c6e482043</password>
+			<id>bintray</id>
+			<password>${env.bintray-token}</password>
 		</server>
 	</servers>
 </settings>
