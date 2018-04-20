@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.che4</groupId>
 	<artifactId>target-dev-platform</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<packaging>eclipse-target-definition</packaging>
 	<name>Che4 target platform for Eclipse plug-ins development</name>
 	
