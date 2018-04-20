@@ -7,7 +7,7 @@
 	<servers>
 		<server>
 			<id>bintray</id>
-			<password>${env.bintray-token}</password>
+			<password>${env.bintraytoken}</password>
 		</server>
 	</servers>
 </settings>
